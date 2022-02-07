@@ -1,4 +1,5 @@
 
+// Element Variables
 const counterElement = document.getElementById('counter');
 const pauseButton = document.getElementById('pause');
 const plusButton = document.getElementById('plus');
@@ -63,5 +64,4 @@ let submitComment = (e) => {
 	let comment = document.getElementById('comment-input').value;
 	commentsList.innerHTML += `<p>${comment}</p>`;
 	commentForm.reset();
-
-}
+} 

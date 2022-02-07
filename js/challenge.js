@@ -1,9 +1,12 @@
+
 const counterElement = document.getElementById('counter');
 const pauseButton = document.getElementById('pause');
 const plusButton = document.getElementById('plus');
 const minusButton = document.getElementById('minus');
 const likeButton = document.getElementById('heart');
-const counterLikesList = document.querySelector("ul.likes")
+const counterLikesList = document.querySelector("ul.likes");
+const commentForm = document.getElementById('comment-form');
+const commentsList = document.getElementById('list')
 const counterLikes = {}
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -12,6 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	minusButton.addEventListener('click', decrementCounter);
 	likeButton.addEventListener('click', heartClick);
 	pauseButton.addEventListener('click', pauseCounter);
+	commentForm.addEventListener('submit', submitComment);
 });
 
 // Check if counter has been paused.
@@ -51,4 +55,13 @@ let pauseCounter = () => {
 	pauseButton.innerText = (pauseButton.innerText === "pause") ? "resume" : "pause";
 	const buttons = [plusButton, minusButton, likeButton];
 	buttons.forEach( (button) => { button.disabled = !button.disabled });
+}
+
+// Gets user comments and lists them in the comment section
+let submitComment = (e) => {
+	e.preventDefault();
+	let comment = document.getElementById('comment-input').value;
+	commentsList.innerHTML += `<p>${comment}</p>`;
+	commentForm.reset();
+
 }

@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	plusButton.addEventListener('click', incrementCounter);
 	minusButton.addEventListener('click', decrementCounter);
 	likeButton.addEventListener('click', heartClick);
+	pauseButton.addEventListener('click', pauseCounter);
 });
 
 // Check if counter has been paused.
@@ -43,4 +44,11 @@ let heartClick = () => {
 		counterLikesList.appendChild(li)
 	}
 	
+}
+
+// Pauses the counter, which disables all other buttons except the pause button
+let pauseCounter = () => {
+	pauseButton.innerText = (pauseButton.innerText === "pause") ? "resume" : "pause";
+	const buttons = [plusButton, minusButton, likeButton];
+	buttons.forEach( (button) => { button.disabled = !button.disabled });
 }
